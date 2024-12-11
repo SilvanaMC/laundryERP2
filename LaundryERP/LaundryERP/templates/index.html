@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Pagina Principal{% endblock %}
+{%block content%}
+<div class="container mt-4">
+    <h1>Hola Bienvenido, {{ request.user.first_name }} a la Lavanderia</h1>
+    <p>La session a iniciado con exito.</p>
+
+</div>
+{% endblock %}

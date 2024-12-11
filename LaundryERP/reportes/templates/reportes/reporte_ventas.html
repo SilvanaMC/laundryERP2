@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Reporte de Ventas{% endblock %}
+{%block content%}
+<h1>Reporte de Ventas</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Generar Reporte</button>
+    <a href="{% url 'reporte_pdf' %}"><button type="button" class="btn btn-secondary">Generar PDF</button></a>
+</form>
+
+{% if ordenes %}
+    <h2>Resultados del Reporte </h2>
+    <p> <strong>Total de Ventas:</strong> {{total_ventas}} </p>
+    <p> <strong>Monto Total:</strong>${{total_monto}}</p>
+    
+    {% if metodo_pago_mas_usado%}
+        <p><strong>Metodo de Pago Mas Usado:</strong>{{metodo_pago_mas_usado}}</p>
+    {% endif %}
+    <h3>Detalles de Ventas</h3>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID Orden de Servicio</th>
+                <th>Cliente</th>
+                <th>Empleado</th>
+                <th>Fecha de Creación</th>
+                <th>Estado</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for orden in ordenes %}
+                <tr>
+                    <td>{{ orden.id }}</td>
+                    <td>{{ orden.cliente.nombre }}</td>
+                    <td>{{ orden.empleado.username }}</td>
+                    <td>{{ orden.fecha_creacion }}</td>
+                    <td>{{ orden.estado }}</td>
+                    <td>${{ orden.total }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} Listado de Ordenes {% endblock %}
+{%block content%}
+<div class="container mt-4"> 
+
+    <h2>Lista de Ordenes</h2>
+    <a href="{% ordenes:crear_orden %}" class="btn btn-primary">Crear Nueva Orden</a>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Empleado</th>
+                <th>Estado</th>
+                <th>Fecha de Creacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for orden in ordenes %}
+            <tr>
+                <td>{{ orden.id }}</td>
+                <td>{{ orden.cliente.nombre }}</td>
+                <td>{{ orden.empleado.username }}</td>
+                <td>{{ orden.estado }}</td>
+                <td>{{ orden.fecha_creacion }}</td>
+                <td>
+                    <a href="{% url 'ordenes:detalle_orden' orden.id %}" class="btn btn-info">Detalles</a>
+                    <a href="{% url 'ordenes:actualizar_orden' orden.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'ordenes:eliminar_orden' orden.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}

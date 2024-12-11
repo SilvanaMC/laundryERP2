@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Detalle de la Venta{% endblock %}
+{%block content%}
+<h1>Detalle de la Venta {{orden.id}}</h1>
+
+<p><strong>Orden Asociada:</strong> {{ venta.orden_servicio.id}}</p>
+
+<p><strong>Monto Total:</strong> ${{ venta.monto_total }}</p>
+
+<p><strong>Metodo de Pago:</strong> {{ venta.get_metodo_pago_display }}</p>
+
+<p><strong>Fecha de Venta:</strong>{{ venta.fecha_venta }}</p>
+
+<a href="{% url 'ventas:lista_ventas' %}" class="btn btn-secondary">Ir a Lista de Venta</a> 
+
+{% endblock %}

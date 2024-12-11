@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Orden{% endblock %}
+{%block content%}
+<h1>Actualizar el Estado de la Orden</h1>
+
+<p><strong>Cliente:</strong> {{ orden.cliente.nombre }}</p>
+
+<p><strong>Empleado:</strong> {{ orden.Empleado.username }}</p>
+
+<p><strong>Estado:</strong> {{ orden.estado }}</p>
+
+<p><strong>Fecha de creación:</strong>{{ orden.fecha_creacion }}</p>
+
+<p><strong>Total:</strong> ${{ orden.total }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="estado">Actualizar Estado:</label>
+        <select class="form-control" id="estado" name="estado">
+            <option value="pendiente" {% if orden.estado =='pendiente' %} selected  {% endif %}>Pendiente</option>
+            <option value="proceso" {% if orden.estado =='proceso' %} selected  {% endif %}>En Proceso</option>
+            <option value="finalizado" {% if orden.estado =='conpletada' %} selected  {% endif %}>Completada</option>  
+        </select>
+
+
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+
+{% endblock %}

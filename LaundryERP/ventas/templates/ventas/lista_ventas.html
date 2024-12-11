@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} Listado de Ventas {% endblock %}
+{%block content%}
+<div class="container mt-4"> 
+
+    <h2>Lista de Ventas</h2>
+    <a href="{% ventas:crear_venta %}" class="btn btn-primary">Crear Nueva Venta</a>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Orden</th>
+                <th>Monto Total</th>
+                <th>Metodo de Pago</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+            <tr>
+                <td>{{ venta.id }}</td>
+                <td>{{ venta.orden_servicio.id }}</td>
+                <td>{{ venta.monto_total }}</td>
+                <td>{{ venta.get_metodo_pago_display }}</td>
+                <td>{{ venta.fecha_venta }}</td>
+                <td>
+                    <a href="{% url 'ventas:detalle_venta' id=venta.id %}" class="btn btn-info">Detalles</a>
+                    <a href="{% url 'ventas:actualizar_venta' id=venta.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'ventas:eliminar_venta' id=venta.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}
