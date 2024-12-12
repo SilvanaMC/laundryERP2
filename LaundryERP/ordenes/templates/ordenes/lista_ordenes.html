@@ -4,7 +4,7 @@
 <div class="container mt-4"> 
 
     <h2>Lista de Ordenes</h2>
-    <a href="{% ordenes:crear_orden %}" class="btn btn-primary">Crear Nueva Orden</a>
+    <a href="{% url 'ordenes:crear_orden' %}" class="btn btn-primary">Crear Nueva Orden</a>
     <table class="table mt-4">
         <thead>
             <tr>
@@ -26,7 +26,7 @@
                 <td>{{ orden.fecha_creacion }}</td>
                 <td>
                     <a href="{% url 'ordenes:detalle_orden' orden.id %}" class="btn btn-info">Detalles</a>
-                    <a href="{% url 'ordenes:actualizar_orden' orden.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'ordenes:actualizar_estado' orden.id %}" class="btn btn-warning">Editar</a>
                     <a href="{% url 'ordenes:eliminar_orden' orden.id %}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>

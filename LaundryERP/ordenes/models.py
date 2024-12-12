@@ -23,7 +23,7 @@ class Prenda(models.Model):
         ('sudadera', 'Sudadera'),
         ('pantalones_shorts', 'Pantalones Shorts'),
     ]
-    tipo_prenda=models.CharField(max_length=50, choices=TIPO_PRENDA_CHOICES), 
+    tipo_prenda=models.CharField(max_length=50, choices=TIPO_PRENDA_CHOICES, default= 'pantalon') 
     precio=models.DecimalField(max_digits=10, decimal_places=2)
     descripcion=models.TextField()
 

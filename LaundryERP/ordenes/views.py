@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import OrdenDeServicio, Cliente
-from .forms import OrdenDeServicioForm, ClienteForm 
+from .models import OrdenDeServicio, Cliente, Prenda
+from .forms import OrdenDeServicioForm, ClienteForm, PrendaForm 
 from django.contrib import messages
 
 # Create your views here.
@@ -57,3 +57,40 @@ def crear_cliente(request):
 def lista_clientes(request):
     clientes = Cliente.objects.all()
     return render(request, 'ordenes/lista_clientes.html', {'clientes': clientes})
+
+#def eliminar_cliente(request):
+
+def crear_prenda(request):
+    if request.method == 'POST':
+        form = PrendaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Prenda registrada exitosamente')
+            return redirect('ordenes:lista_prendas')
+    else:
+        form = PrendaForm()
+    return render(request, 'ordenes/crear_prenda.html', {'form': form})
+
+def lista_prendas(request):
+    prendas = Prenda.objects.all()
+    return render(request, 'ordenes/lista_prendas.html', {'prendas': prendas})
+
+def editar_prenda(request, id):
+    prenda = get_object_or_404(Prenda, id=id)
+    if request.method == 'POST':
+        form = PrendaForm(request.POST, instance= prenda)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'La prenda ha sido actualizada de manera exitosa')
+            return redirect('ordenes:lista_prendas')
+    else:
+        form = PrendaForm(instance= prenda)
+    return render(request, 'ordenes/editar_prenda.html', {'form': form})
+    
+def eliminar_prenda(request, id):
+    prenda = get_object_or_404(Prenda, id=id)
+    if request.method == 'POST':
+        prenda.delete()
+        messages.success(request, f'La Prenda {prenda.id} ha sido eliminada')
+        return redirect('ordenes:lista_prendas')
+    return render(request, 'ordenes/eliminar_prenda.html', {'prenda': prenda})

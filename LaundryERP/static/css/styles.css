@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(images/background.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: visible;
+}
+
+.div1 {
+    position: absolute;
+    width: 17.5%;
+    height: 53.5%;
+    left: 7.5%;
+    top: 3.5%;
+    background-color: red;
+}
+
+.div2 {
+    position: absolute;
+    width: 47%;
+    height: 61%;
+    left: calc(7.5% + 17.5% + 1.6%);
+    top: 1.6%;
+    background-color: blue;
+}
+
+.div3{
+    position: absolute;
+    width: 20%;
+    height: 25%;
+    left: calc(7.5% + 17.5% + 2% + 47% + 1%);
+    top: 3.6%;
+    background-color: green;
+}
+
+.div4{
+    position: absolute;
+    width: 20%;
+    height: 25%;
+    left: calc(7.5% + 17.5% + 2% + 47% + 1%);
+    top: calc(3.6% + 25% + 2%);
+    background-color: yellow;
+}
+
+.div5{
+    position: absolute;
+    width: 17.5%;
+    height: 40.5%;
+    left: 7.5%;
+    top: calc(3.5% + 53.5%);
+    background-color: orange;
+}
+
+.div6{
+    position: absolute;
+    width: 13.8%;
+    height: 32%;
+    left: calc(7.5% + 17.5% + 1.6%);
+    top: calc(1.6% + 61% + 2.6%);
+    background-color: pink;
+}
+
+.div7{
+    position: absolute;
+    width: 32.6%;
+    height: 32%;
+    left: calc(7.5% + 17.5% + 2% + 13.8% + 0.3%);
+    top: calc(1.6% + 61% + 2.6%);
+    background-color: purple;
+}
+
+.div8{
+    position: absolute;
+    width: 20%;
+    height: 39.5%;
+    left: calc(7.5% + 17.5% + 2% + 13.8% + 0.6% + 32.6% + 1%);
+    top: calc(3.6% + 25% + 2% + 25% + 2%);
+    background-color: cyan;
+}

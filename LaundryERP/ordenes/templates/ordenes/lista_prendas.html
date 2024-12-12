@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Listado de Prendas {% endblock %}
+{%block content%}
+<div class="container mt-4"> 
+
+    <h2>Lista de Prendas</h2>
+    <a href="{% url 'ordenes:crear_prenda' %}" class="btn btn-primary">registrar Nueva Prenda</a>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prenda in prendas %}
+            <tr>
+                <td>{{ prenda.id }}</td>
+                <td>{{ prenda.get_tipo_prenda_display }}</td>
+                <td>{{ prenda.descripcion }}</td>
+                <td>{{ prenda.precio }}</td>
+                <td>
+                    <a href="{% url 'ordenes:editar_prenda' prenda.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'ordenes:eliminar_prenda' prenda.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center"> No hay prendas registradas</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

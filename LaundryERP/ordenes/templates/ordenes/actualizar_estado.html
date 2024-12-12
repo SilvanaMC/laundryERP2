@@ -18,9 +18,9 @@
     <div class="form-group">
         <label for="estado">Actualizar Estado:</label>
         <select class="form-control" id="estado" name="estado">
-            <option value="pendiente" {% if orden.estado =='pendiente' %} selected  {% endif %}>Pendiente</option>
-            <option value="proceso" {% if orden.estado =='proceso' %} selected  {% endif %}>En Proceso</option>
-            <option value="finalizado" {% if orden.estado =='conpletada' %} selected  {% endif %}>Completada</option>  
+            <option value="pendiente" {% if orden.estado == 'pendiente' %} selected  {% endif %}>Pendiente</option>
+            <option value="proceso" {% if orden.estado == 'proceso' %} selected  {% endif %}>En Proceso</option>
+            <option value="finalizado" {% if orden.estado == 'completada' %} selected  {% endif %}>Completada</option>  
         </select>
 
 

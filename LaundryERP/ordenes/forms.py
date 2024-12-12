@@ -32,4 +32,12 @@ class ClienteForm(forms.ModelForm):
             'telefono': forms.TextInput(attrs = {'class': 'form-control'}),
         }
 
-        
+class PrendaForm(forms.ModelForm):
+    class Meta:
+        model = Prenda
+        fields = ['tipo_prenda', 'precio', 'descripcion']
+        widgets = {
+            'tipo_prenda': forms.TextInput(attrs = {'class': 'form-control'}),
+            'precio': forms.NumberInput(attrs = {'class': 'form-control'}),
+            'descripcion': forms.Textarea(attrs = {'class': 'form-control'}),
+        }

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Crear Prenda{% endblock %}
+{%block content%}
+<h1>Crear Nueva Prenda</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}
